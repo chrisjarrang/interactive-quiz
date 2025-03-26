@@ -9,6 +9,7 @@ let currentQuestionIndex = 0;
 let totalScore = 0;
 
 start.addEventListener('click', () => {
+    shuffleArray(questions);
     changeState('start');
 });
 
@@ -30,6 +31,13 @@ restart.addEventListener('click', () => {
     location.reload();
 });
 
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
 const questions = [
     { question: "Which email client has the most limited support for interactive elements?", options: ["Gmail", "Outlook", "Apple Mail", "Yahoo Mail"], answer: "Outlook" },
     { question: "Which CSS property is commonly used to create hover effects in interactive emails?", options: ["transition", "animation", "hover", "opacity"], answer: "hover" },
@@ -41,12 +49,15 @@ const questions = [
 
 
 function displayQuestion() {
-    console.log(currentQuestionIndex);
     const currentQuestion = questions[currentQuestionIndex];
-    question.innerText = `
-        ${currentQuestion.question}
-    `;
-    currentQuestion.options.forEach(option => {
+    question.innerText = currentQuestion.question;
+
+    // Shuffle the options before displaying
+    let shuffledOptions = [...currentQuestion.options];
+    shuffleArray(shuffledOptions); 
+
+
+    shuffledOptions.forEach(option => {
         const card = document.createElement('div');
         card.classList.add('card');
         card.innerText = option;
@@ -76,7 +87,7 @@ cardContainer.addEventListener('click', (event) => {
                     changeState('finished');
                 }
                 
-            }, 2000);
+            }, 1000);
         
         } else {
             document.querySelectorAll('.card').forEach(card => {
@@ -95,7 +106,7 @@ cardContainer.addEventListener('click', (event) => {
                     changeState('finished');
                 }
                 
-            }, 2000);
+            }, 1000);
         }
     }
 });
