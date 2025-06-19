@@ -7,6 +7,7 @@ const score = document.querySelector('.score');
 let state = 'welcome';
 let currentQuestionIndex = 0;
 let totalScore = 0;
+let CodeSnippet = ""
 
 start.addEventListener('click', () => {
     shuffleArray(questions);
@@ -39,12 +40,101 @@ function shuffleArray(array) {
 }
 
 const questions = [
-    { question: "Which email client has the most limited support for interactive elements?", options: ["Gmail", "Outlook", "Apple Mail", "Yahoo Mail"], answer: "Outlook" },
-    { question: "Which CSS property is commonly used to create hover effects in interactive emails?", options: ["transition", "animation", "hover", "opacity"], answer: "hover" },
-    { question: "Which interactive element is most commonly supported across email clients?", options: ["CSS hover effects", "JavaScript", "GIFs", "Embedded videos"], answer: "CSS hover effects" },
-    { question: "Why is fallback content important in interactive emails?", options: ["It speeds up loading times", "It ensures emails work in unsupported clients", "It prevents spam filtering", "It reduces email size"], answer: "It ensures emails work in unsupported clients" },
-    { question: "Which of these elements is NOT supported in most email clients?", options: ["CSS animations", "Embedded videos", "Interactive carousels", "Media queries"], answer: "Embedded videos" },
-    { question: "What should you always include when using interactive elements?", options: ["Custom fonts", "A fallback experience", "Embedded JavaScript", "High-resolution images"], answer: "A fallback experience" }
+  {
+    question: "What makes an email 'interactive'?",
+    options: [
+      "It contains embedded video",
+      "It lets users perform actions within the email itself",
+      "It links to an external landing page",
+      "It includes JavaScript animations"
+    ],
+    answer: "It lets users perform actions within the email itself"
+  },
+  {
+    question: "Why is JavaScript not used in most email clients?",
+    options: [
+      "It increases email size",
+      "It causes layout issues",
+      "It poses a security risk",
+      "It slows down rendering"
+    ],
+    answer: "It poses a security risk"
+  },
+  {
+    question: "Which three things must be supported for checkbox-based interactivity to work?",
+    options: [
+      "Media queries, `<form>`, and `:hover`",
+      "`<input>`, `:checked`, and sibling selectors (`+` / `~`)",
+      "`<script>`, `onclick`, and `<button>`",
+      "ARIA roles, tab index, and `<span>` elements"
+    ],
+    answer: "`<input>`, `:checked`, and sibling selectors (`+` / `~`)"
+  },
+  {
+    question: "Why is fallback content important in interactive emails?",
+    options: [
+      "It reduces bounce rate",
+      "It ensures the email renders in clients that don't support interactivity",
+      "It improves loading speed",
+      "It makes the email mobile-friendly"
+    ],
+    answer: "It ensures the email renders in clients that don't support interactivity"
+  },
+  {
+    question: "Which email client has the most limited support for interactive elements?",
+    options: ["Gmail", "Outlook", "Apple Mail", "Yahoo Mail"],
+    answer: "Outlook"
+  },
+  {
+    question: "Which CSS selector is used to display content when a checkbox is checked?",
+    options: [
+      ":focus",
+      ":hover",
+      ":active",
+      ":checked"
+    ],
+    answer: ":checked"
+  },
+  {
+    question: "Which accessibility consideration is most relevant when using hidden checkboxes?",
+    options: [
+      "Using `aria-hidden=\"true\"` on fallback content",
+      "Ensuring the interactive elements are keyboard accessible",
+      "Adding scrollable divs to contain checkboxes",
+      "Using only decorative labels"
+    ],
+    answer: "Ensuring the interactive elements are keyboard accessible"
+  },
+  {
+    question: "What is the purpose of `display: none !important;` on checkboxes in interactive email?",
+    options: [
+      "To reduce CSS specificity issues",
+      "To prevent interaction",
+      "To hide them visually but still allow functionality",
+      "To stop them from being read by screen readers"
+    ],
+    answer: "To hide them visually but still allow functionality"
+  },
+  {
+    question: "Which of the following would improve accessibility in interactive emails?",
+    options: [
+      "Relying on hover effects only",
+      "Adding ARIA labels and descriptive text",
+      "Using inline JavaScript for interactions",
+      "Disabling all interactivity"
+    ],
+    answer: "Adding ARIA labels and descriptive text"
+  },
+  {
+    question: "What should you always include when using interactive elements?",
+    options: [
+      "Custom fonts",
+      "A fallback experience",
+      "Embedded JavaScript",
+      "High-resolution images"
+    ],
+    answer: "A fallback experience"
+  }
 ];
 
 
