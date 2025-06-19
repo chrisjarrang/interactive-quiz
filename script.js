@@ -51,7 +51,7 @@ const questions = [
     answer: "It lets users perform actions within the email itself"
   },
   {
-    question: "Why is JavaScript not used in most email clients?",
+    question: "Why is JavaScript not used in email?",
     options: [
       "It increases email size",
       "It causes layout issues",
